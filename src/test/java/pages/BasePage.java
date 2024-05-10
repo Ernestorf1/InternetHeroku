@@ -35,7 +35,7 @@ public class BasePage {
      * WebDriverWait se usa para poner esperas explícitas en los elementos web
      */
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-    private static final Logger logger = LogManager.getLogger(BasePage.class);
+    public static Logger logger = LogManager.getLogger(BasePage.class);
  
     /* 
      * Configura el WebDriver para Chrome usando WebDriverManager.
@@ -102,7 +102,7 @@ public class BasePage {
 
 
 
-    public void clickElement(String locator) {
+    public void clickElement(String locator, String selectorType) {
         // Le agrego una espera al elemento web para cuando sea visible y este
         // disponible para clickear
         /*
@@ -112,8 +112,7 @@ public class BasePage {
          * (Documento de Objeto del Modelo) de la página.
          */
         try {
-            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
-            element.click();
+            Find(locator, selectorType).click();
         } catch (Exception e) {
             logger.error("Error while clicking element: " + e.getMessage());
         }
@@ -237,10 +236,12 @@ public class BasePage {
         }
     }
 
-    public void executeJavaScript(String script) {
+    public void executeJavaScript(WebElement element, String script) {
         try {
             JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript(script);
+            js.executeScript(script, element);
+            // Esperar 5 segundos después de ejecutar el script de JavaScript
+                      // Manejar la interrupción del hilo (puedes decidir cómo manejarla)
         } catch (Exception e) {
             logger.error("Error while executing JavaScript: " + e.getMessage());
         }
@@ -257,7 +258,7 @@ public class BasePage {
     public void switchToWindowWithTitle(String title) {
         String currentWindowHandle = driver.getWindowHandle();
         Set<String> windowHandles = driver.getWindowHandles();
-
+        System.out.println("Window Handles:");
         for (String windowHandle : windowHandles) {
             driver.switchTo().window(windowHandle);
             if (driver.getTitle().equals(title)) {
@@ -277,6 +278,6 @@ public class BasePage {
     }
 
     public void waitForElementToBeVisible(String locator) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(locator)));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
     }
 }
