@@ -22,10 +22,7 @@ public class windowHandlePage extends BasePage {
        
     }
 
-    public void isNewWindowLink() {
-      
-     
-    }
+    
 
     public void clicksOnNewWindowLink() {
       elementIsDisplayed(firstPageTitle, "xpath");
