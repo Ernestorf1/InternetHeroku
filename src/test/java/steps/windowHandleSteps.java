@@ -1,5 +1,6 @@
 package steps;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -24,9 +25,9 @@ public void user_clicks_on_the_new_link() {
 public void should_be_two_open_windows() {
   windowHP.isNewOpenedWindow();
 }
-@Then("^user can see a new window with specific title$")
-public void user_can_see_a_new_window_with_specific_title() {
-   windowHP.isNewWindowLink();
+@And ("^user can see a new window with specific title$")
+public void user_can_see_a_new_window_with_specific_title(){
+   windowHP.isTitlePresent();
 }
 @When("^user close the second window$")
 public void user_close_the_second_window() {

@@ -277,7 +277,15 @@ public class BasePage {
         driver.switchTo().window(windowHandle);
     }
 
-    public void waitForElementToBeVisible(String locator) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
-    }
+    public WebElement waitForElementToBeVisible(String locator, String selectorType, int timeoutInSeconds) {
+        WebElement element = null;
+        try {
+            WebDriverWait customWait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+            element = Find(locator, selectorType);
+            return customWait.until(ExpectedConditions.visibilityOf(element));
+        } catch (Exception e) {
+            logger.error("Error while waiting for element to be visible: " + e.getMessage());
+            return null;
+        }
+}
 }
