@@ -1,6 +1,6 @@
 Feature: Switch to window on Internet Heroku Web Page
 
-@Test
+
 Scenario: Switch to a new window
 Given user is on main Page
 When user clicks on Multiple Windows

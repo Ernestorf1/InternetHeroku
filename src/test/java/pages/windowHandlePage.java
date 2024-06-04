@@ -34,7 +34,7 @@ public class windowHandlePage extends BasePage {
     assert windowHandles.size() == 2;
 
     switchToWindowWithTitle("New Window");
-   ;
+   
 
   }
 

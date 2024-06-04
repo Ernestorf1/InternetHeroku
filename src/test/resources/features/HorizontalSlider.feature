@@ -1,5 +1,6 @@
 Feature: User Interacts with slider
    
+@TestU
 Scenario: User set slider
 Given User is on Internet Heroku App
 Given user is on Horizontal Slider option

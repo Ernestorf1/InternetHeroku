@@ -7,7 +7,7 @@ import pages.BasePage;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src\\test\\resources\\features", glue = "steps",
- plugin = {"pretty","html:target/cucumber-reports" }  , tags = "@Test2" )
+ plugin = {"pretty","html:target/cucumber-reports" }  , tags = "@Test44" )
 /*
  * *
  * Esta clase va a unir todas las funcionalidades, y los features

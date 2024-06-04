@@ -1,6 +1,6 @@
 Feature: Switch to window with specific title
 
-@Test2
+
 Scenario: verify window switching to a new window with specific title
 Given user  navigates to Internet Heroku app page
 When user navigates to Multiple Windows page

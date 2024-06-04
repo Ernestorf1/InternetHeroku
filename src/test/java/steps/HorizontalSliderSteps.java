@@ -21,7 +21,7 @@ public class HorizontalSliderSteps {
     }
 
     @When("^user drag the slider to value$")
-    public void user_drag_the_slider_to_value() {
+    public void user_drag_the_slider_to_value(){
         hsliderP.dragSliderToValue();
 
     }

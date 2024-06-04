@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.cucumber.java.en.Given;
 
-
 public class switchToWindowPage extends BasePage {
     private String multipleWindowOption = "//*[@id=\'content\']/ul/li[33]/a";
     private String switchWindowLink = "//*[@id=\'content\']/div/a";
@@ -23,7 +22,7 @@ public class switchToWindowPage extends BasePage {
 
     public void navigateToMain() {
         navigateTo("https://the-internet.herokuapp.com/");
-        
+
     }
 
     public void clicksMultipleWindowsOption() {
@@ -31,26 +30,23 @@ public class switchToWindowPage extends BasePage {
     }
 
     public void switchToNewWindow() {
-        
+
         clickElement(switchWindowLink, "xpath");
 
         // Esperar a que se abra una nueva ventana
         wait.until(ExpectedConditions.numberOfWindowsToBe(2));
 
-   
-
     }
 
-    public void verifyOnNewWindow() {      
+    public void verifyOnNewWindow() {
         Assert.assertTrue("New Window", true);
         newWindowHandle = driver.getWindowHandle();
     }
 
     public void goBackMainPage() throws InterruptedException {
-      
-       
+
         driver.switchTo().defaultContent();
-     
+
     }
 
 }

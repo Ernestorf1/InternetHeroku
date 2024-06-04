@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebElement;
@@ -32,7 +33,7 @@ public class HorizontalSliderPage extends BasePage {
 
 
    public void dragSliderToValue() {
-    // Declarar la variable slider dentro del método dragSliderToValue
+   /* // Declarar la variable slider dentro del método dragSliderToValue
     WebElement slider = Find("//*[@id=\'content\']/div/div/input", "xpath");
     if (slider != null) {
         // Si el slider se encuentra correctamente, ejecutar el script de JavaScript
@@ -40,13 +41,23 @@ public class HorizontalSliderPage extends BasePage {
     } else {
         // Si el slider no se encuentra, registrar un error
         logger.error("Slider element not found");
-    }
-}
+    }*/
+    WebElement slider = driver.findElement(By.cssSelector("input[type='range']"));
+
+    // Inicializar la clase Actions
+    Actions actions = new Actions(driver);
+
+    // Mover el slider
+    actions.clickAndHold(slider)
+           .moveByOffset(0, 0) // Ajusta el desplazamiento según sea necesario
+           .release()
+           .perform();
+   }
 
     public void verifySliderValue() {
-
+WebElement output = driver.findElement(By.id("range"));
        /* String sliderActual = textFromElement(reSlider, "xpath");*/
-        System.out.println(reSlider);
+        System.out.println(output.getText());
     }
 
 }
